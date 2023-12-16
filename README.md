@@ -15,4 +15,4 @@ Explore individual project folders to find README files providing detailed infor
 Identify projects marked as tutorials to see my hands-on learning experiences.
 
 ## Getting Started
-If you're new here, feel free to explore any project that catches your eye. Each project's README file includes information on its purpose, features, and setup instructions. 
+Feel free to explore any project that catches your eye. Each project's README file includes information on its purpose, features, and setup instructions. 
