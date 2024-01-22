@@ -1,0 +1,171 @@
+:root {
+  --color-main-1: #1d3557;
+  --color-main-1-darker: #001739;
+  --color-main-2: #e63946;
+  --color-background: #f1faee;
+  --color-grid-background: #a8dadc;
+  --color-grey: #d9d9d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  /* overflow-x: auto;
+  overflow-y: auto;
+  height: 100vh; */
+  font-family: "Montagu Slab", serif;
+  color: var(--color-main-1-darker);
+  font-weight: 500;
+  line-height: 1.6;
+  overscroll-behavior-y: none;
+  position: relative;
+  background-color: var(--color-background);
+}
+
+.title {
+  margin: 0 auto;
+  padding: 2.4rem 0 4.8rem 0;
+  width: fit-content;
+  font-size: 5.4rem;
+  font-weight: 700;
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  column-gap: 6.4rem;
+  row-gap: 4.4rem;
+  align-content: start;
+  width: fit-content;
+  height: fit-content;
+  padding: 0 5rem 5rem 5rem;
+  margin: 0 auto;
+}
+
+/* Grid */
+.grid-container {
+  justify-self: end;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: 4rem 40rem;
+  grid-template-rows: 4rem 40rem;
+}
+
+.grid-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.4rem;
+  font-weight: 600;
+  background-color: var(--color-grid-background);
+  border: solid 0.1rem var(--color-main-1);
+}
+
+.horizontal-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.horizontal-row div {
+  border-bottom: solid 0.3rem var(--color-main-2);
+}
+
+.vertical-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-row div {
+  border-right: solid 0.3rem var(--color-main-2);
+  z-index: 1;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 4rem);
+  grid-template-rows: repeat(10, 4rem);
+}
+
+.grid-index-recomended {
+  color: var(--color-main-2);
+}
+
+.grid-shot {
+  color: var(--color-main-1);
+}
+.grid-killzone {
+  color: var(--color-main-1-darker);
+}
+.grid-target {
+  color: var(--color-main-2);
+}
+.grid-hit {
+  color: var(--color-main-2);
+  background-color: var(--color-main-1);
+}
+.grid-destroyed {
+  color: var(--color-grey);
+  background-color: var(--color-main-1-darker);
+}
+
+/* Options panel */
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  row-gap: 1.2rem;
+  font-size: 1.8rem;
+  width: fit-content;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.options-checkbox {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-main-2);
+  background-color: var(--color-grid-background);
+}
+
+.options-checkbox:hover,
+.options-checkbox:active {
+  border: solid 0.1rem var(--color-main-1);
+}
+
+.option-button {
+  margin-top: auto;
+}
+
+.btn-reset {
+  width: 100%;
+  height: 3.6rem;
+  background-color: var(--color-main-1);
+  color: #c1fdff;
+  font-family: inherit;
+  font-size: 1.8rem;
+  border: none;
+}
+
+.btn-reset:active {
+  scale: 0.99;
+}

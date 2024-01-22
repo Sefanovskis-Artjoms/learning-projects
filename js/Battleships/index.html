@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship assistant</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,400;16..144,500;16..144,600;16..144,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/7cac6f5ac1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1 class="title">Battleship assistant</h1>
+    <div class="content-container">
+      <div class="grid-container">
+        <div class="grid-square empty-square"></div>
+        <div class="horizontal-row">
+          <div class="grid-square title-square">K</div>
+          <div class="grid-square title-square">A</div>
+          <div class="grid-square title-square">R</div>
+          <div class="grid-square title-square">T</div>
+          <div class="grid-square title-square">U</div>
+          <div class="grid-square title-square">P</div>
+          <div class="grid-square title-square">E</div>
+          <div class="grid-square title-square">L</div>
+          <div class="grid-square title-square">I</div>
+          <div class="grid-square title-square">S</div>
+        </div>
+        <div class="vertical-row">
+          <div class="grid-square title-square">0</div>
+          <div class="grid-square title-square">1</div>
+          <div class="grid-square title-square">2</div>
+          <div class="grid-square title-square">3</div>
+          <div class="grid-square title-square">4</div>
+          <div class="grid-square title-square">5</div>
+          <div class="grid-square title-square">6</div>
+          <div class="grid-square title-square">7</div>
+          <div class="grid-square title-square">8</div>
+          <div class="grid-square title-square">9</div>
+        </div>
+        <div class="main-grid">
+          <div data-col="0" data-row="0" class="grid-square grid-index">6</div>
+          <div
+            data-col="1"
+            data-row="0"
+            class="grid-square grid-index-recomended"
+          >
+            7
+          </div>
+          <div data-col="2" data-row="0" class="grid-square grid-shot">
+            <i class="fas fa-times"></i>
+          </div>
+          <div data-col="3" data-row="1" class="grid-square grid-killzone">
+            <i class="fas fa-times"></i>
+          </div>
+          <div data-col="4" data-row="0" class="grid-square grid-target">
+            <i class="fas fa-crosshairs"></i>
+          </div>
+          <div data-col="5" data-row="0" class="grid-square grid-hit">
+            <i class="fas fa-times"></i>
+          </div>
+          <div data-col="6" data-row="1" class="grid-square grid-destroyed">
+            <i class="fas fa-times"></i>
+          </div>
+          <div data-col="7" data-row="0" class="grid-square grid-index">6</div>
+          <div data-col="8" data-row="0" class="grid-square grid-index">6</div>
+          <div data-col="9" data-row="0" class="grid-square grid-index">6</div>
+          <div data-col="0" data-row="1" class="grid-square grid-index">6</div>
+        </div>
+      </div>
+      <div class="options-container">
+        <div class="option">
+          <div id="shot-checkbox" class="options-checkbox" data-marked="true">
+            <i class="fas fa-times"></i>
+          </div>
+          <label for="shot-checkbox">Place/remove missed shot</label>
+        </div>
+        <div class="option">
+          <div
+            id="hit-checkbox"
+            class="options-checkbox"
+            data-marked="false"
+          ></div>
+          <label for="hit-checkbox">Place/remove hit</label>
+        </div>
+        <div class="option">
+          <div
+            id="sunk-checkbox"
+            class="options-checkbox"
+            data-marked="false"
+          ></div>
+          <label for="sunk-checkbox">Mark/unmark ship as sunk</label>
+        </div>
+        <div class="counter">
+          <span class="count battleship-count">1</span> Battleships left
+        </div>
+        <div class="counter">
+          <span class="count cruiser-count">2</span> Cruisers left
+        </div>
+        <div class="counter">
+          <span class="count destroyer-count">3</span> Destroyers left
+        </div>
+        <div class="counter">
+          <span class="count submarine-count">4</span> Submarines left
+        </div>
+        <div class="option option-button">
+          <button class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
