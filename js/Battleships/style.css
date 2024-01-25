@@ -1,5 +1,6 @@
 :root {
   --color-main-1: #1d3557;
+  --color-main-1-lighter: #617289;
   --color-main-1-darker: #001739;
   --color-main-2: #e63946;
   --color-background: #f1faee;
@@ -68,7 +69,7 @@ body {
   justify-content: center;
   width: 4rem;
   height: 4rem;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 600;
   background-color: var(--color-grid-background);
   border: solid 0.1rem var(--color-main-1);
@@ -97,26 +98,35 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 4rem);
   grid-template-rows: repeat(10, 4rem);
+  cursor: pointer;
 }
 
-.grid-index-recomended {
+[data-state*="grid-index"] {
+  color: var(--color-main-1-lighter);
+}
+
+[data-state*="grid-index-recomended"] {
   color: var(--color-main-2);
 }
 
-.grid-shot {
+[data-state*="grid-shot"] {
   color: var(--color-main-1);
 }
-.grid-killzone {
+
+[data-state*="grid-killzone"] {
   color: var(--color-main-1-darker);
 }
-.grid-target {
+
+[data-state*="grid-target"] {
   color: var(--color-main-2);
 }
-.grid-hit {
+
+[data-state*="grid-hit"] {
   color: var(--color-main-2);
   background-color: var(--color-main-1);
 }
-.grid-destroyed {
+
+[data-state*="grid-destroyed"] {
   color: var(--color-grey);
   background-color: var(--color-main-1-darker);
 }
