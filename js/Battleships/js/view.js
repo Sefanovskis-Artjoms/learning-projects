@@ -25,12 +25,12 @@ class View {
     });
   }
 
-  addHandlerCheckboxes(activeCheckbox, handler) {
+  addHandlerCheckboxes(state, handler) {
     this._optionsContainer.addEventListener("click", (e) => {
       const checkbox = e.target.closest(".options-checkbox");
       if (!checkbox) return;
       this._unsetCheckboxes();
-      if (activeCheckbox == checkbox.dataset.type) {
+      if (state.currentCheckbox == checkbox.dataset.type) {
         handler(null);
         return;
       }

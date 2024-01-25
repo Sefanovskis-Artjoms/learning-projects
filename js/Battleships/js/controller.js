@@ -10,10 +10,7 @@ const init = function () {
   model.initializeGridState(model.state);
   model.calculateProbability(model.state);
   View.updateUI(model.state);
-  View.addHandlerCheckboxes(
-    model.state.currentCheckbox,
-    controlUpdateCheckboxState
-  );
+  View.addHandlerCheckboxes(model.state, controlUpdateCheckboxState);
 };
 
 init();
