@@ -18,6 +18,8 @@
       src="https://kit.fontawesome.com/7cac6f5ac1.js"
       crossorigin="anonymous"
     ></script>
+
+    <script defer src="js/controller.js" type="module"></script>
   </head>
   <body>
     <h1 class="title">Battleship assistant</h1>
@@ -49,33 +51,86 @@
           <div class="grid-square title-square">9</div>
         </div>
         <div class="main-grid">
-          <div data-col="0" data-row="0" class="grid-square grid-index">6</div>
+          <div
+            data-col="0"
+            data-row="0"
+            data-probabilityIndex="0"
+            class="grid-square game-square grid-index"
+          >
+            6
+          </div>
           <div
             data-col="1"
             data-row="0"
-            class="grid-square grid-index-recomended"
+            class="grid-square game-square grid-index-recomended"
           >
             7
           </div>
-          <div data-col="2" data-row="0" class="grid-square grid-shot">
+          <div
+            data-col="2"
+            data-row="0"
+            data-probabilityIndex="0"
+            class="grid-square game-square grid-shot"
+          >
             <i class="fas fa-times"></i>
           </div>
-          <div data-col="3" data-row="1" class="grid-square grid-killzone">
+          <div
+            data-col="3"
+            data-row="0"
+            data-probabilityIndex="0"
+            class="grid-square game-square grid-killzone"
+          >
             <i class="fas fa-times"></i>
           </div>
-          <div data-col="4" data-row="0" class="grid-square grid-target">
+          <div
+            data-col="4"
+            data-row="0"
+            class="grid-square game-square grid-target"
+          >
             <i class="fas fa-crosshairs"></i>
           </div>
-          <div data-col="5" data-row="0" class="grid-square grid-hit">
+          <div
+            data-col="5"
+            data-row="0"
+            class="grid-square game-square grid-hit"
+          >
             <i class="fas fa-times"></i>
           </div>
-          <div data-col="6" data-row="1" class="grid-square grid-destroyed">
+          <div
+            data-col="6"
+            data-row="0"
+            class="grid-square game-square grid-destroyed"
+          >
             <i class="fas fa-times"></i>
           </div>
-          <div data-col="7" data-row="0" class="grid-square grid-index">6</div>
-          <div data-col="8" data-row="0" class="grid-square grid-index">6</div>
-          <div data-col="9" data-row="0" class="grid-square grid-index">6</div>
-          <div data-col="0" data-row="1" class="grid-square grid-index">6</div>
+          <div
+            data-col="7"
+            data-row="0"
+            class="grid-square game-square grid-index"
+          >
+            6
+          </div>
+          <div
+            data-col="8"
+            data-row="0"
+            class="grid-square game-square grid-index"
+          >
+            6
+          </div>
+          <div
+            data-col="9"
+            data-row="0"
+            class="grid-square game-square grid-index"
+          >
+            6
+          </div>
+          <div
+            data-col="0"
+            data-row="1"
+            class="grid-square game-square grid-index"
+          >
+            6
+          </div>
         </div>
       </div>
       <div class="options-container">
