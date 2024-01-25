@@ -9,6 +9,10 @@ export const state = {
   },
 };
 
+export const setCurrentCheckbox = function (newCurrentCheckbox) {
+  state.currentCheckbox = newCurrentCheckbox;
+};
+
 // Function to initialize the grid data
 export const initializeGridState = function (state) {
   for (let row = 0; row < 10; row++) {

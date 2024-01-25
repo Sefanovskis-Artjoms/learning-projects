@@ -1,9 +1,7 @@
 class View {
   _gridContainer = document.querySelector(".main-grid");
 
-  _shotCheck = document.querySelector("#shot-checkbox");
-  _hitCheck = document.querySelector("#hit-checkbox");
-  _sunkCheck = document.querySelector("#sunk-checkbox");
+  _optionsContainer = document.querySelector(".options-container");
   _allChecks = document.querySelectorAll(".options-checkbox");
 
   _battleships = document.querySelector(".battleship-count");
@@ -23,8 +21,21 @@ class View {
 
   _unsetCheckboxes() {
     this._allChecks.forEach((el) => {
-      el.dataset.marked = "false";
       el.innerHTML = "";
+    });
+  }
+
+  addHandlerCheckboxes(activeCheckbox, handler) {
+    this._optionsContainer.addEventListener("click", (e) => {
+      const checkbox = e.target.closest(".options-checkbox");
+      if (!checkbox) return;
+      this._unsetCheckboxes();
+      if (activeCheckbox == checkbox.dataset.type) {
+        handler(null);
+        return;
+      }
+      checkbox.innerHTML = `<i class="fas fa-times"></i>`;
+      handler(checkbox.dataset.type);
     });
   }
 
