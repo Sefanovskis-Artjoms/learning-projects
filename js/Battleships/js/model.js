@@ -41,6 +41,12 @@ export const initializeGridState = function (state) {
   }
 };
 
+export const resetProbabilityIndex = function (state) {
+  for (let key in state.grid) {
+    state.grid[key].probabilityIndex = 0;
+  }
+};
+
 export const calculateProbability = function (state) {
   for (const ship in state.shipsLeft) {
     // Index calculation on horizontal axis
@@ -75,6 +81,8 @@ export const calculateProbability = function (state) {
         }
         if (canPlaceV) {
           for (let len = 0; len < shipLength; len++) {
+            // Bug fix to not count two times the initial cell
+            if (canPlaceH && len == 0) continue;
             if (state.grid[`${row + len}-${col}`].isUsable) {
               state.grid[`${row + len}-${col}`].probabilityIndex +=
                 +state.shipsLeft[ship].left;
@@ -83,5 +91,18 @@ export const calculateProbability = function (state) {
         }
       }
     }
+  }
+};
+
+export const shot = function (state, row, col) {
+  const cell = state.grid[`${row}-${col}`];
+  if (cell.isUsable) {
+    cell.isUsable = false;
+    cell.state = "grid-shot";
+    return;
+  }
+  if (!cell.isUsable && cell.state == "grid-shot") {
+    cell.isUsable = true;
+    cell.state = "grid-index";
   }
 };

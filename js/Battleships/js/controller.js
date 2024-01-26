@@ -8,10 +8,12 @@ const controlUpdateCheckboxState = function (newCheckboxState) {
 const controlGridClick = function (row, col) {
   const checkbox = model.state.currentCheckbox;
   if (actions[checkbox]) {
-    actions[checkbox](model.state, row, col);
+    actions[checkbox](model.state, +row, +col);
   } else {
     return;
   }
+  model.resetProbabilityIndex(model.state);
+  model.calculateProbability(model.state);
   View.updateUI(model.state);
 };
 
