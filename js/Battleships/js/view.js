@@ -79,6 +79,18 @@ class View {
           : (uiEl.innerHTML = this._shotVariations[stateEl.state]);
       }
     }
+    this._battleships = state.shipsLeft["battleship"].left;
+    this._cruisers = state.shipsLeft["cruiser"].left;
+    this._destroyers = state.shipsLeft["destroyer"].left;
+    this._submarines = state.shipsLeft["submarine"].left;
+  }
+
+  addHandlerGridClick(handler) {
+    this._gridContainer.addEventListener("click", (e) => {
+      const cell = e.target.closest(".game-square");
+      if (!cell) return;
+      handler(cell.dataset.row, cell.dataset.col);
+    });
   }
 }
 
