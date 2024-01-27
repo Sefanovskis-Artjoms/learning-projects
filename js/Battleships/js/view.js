@@ -92,6 +92,13 @@ class View {
       handler(cell.dataset.row, cell.dataset.col);
     });
   }
+
+  addHandlerReset(handler) {
+    this._resetBtn.addEventListener("click", () => {
+      this._unsetCheckboxes();
+      handler();
+    });
+  }
 }
 
 export default new View();

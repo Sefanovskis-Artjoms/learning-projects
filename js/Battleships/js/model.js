@@ -47,12 +47,26 @@ export const resetProbabilityIndex = function (state) {
   }
 };
 
+export const resetGrid = function (state) {
+  state.currentCheckbox = null;
+  state.shipsLeft.battleship.left = 1;
+  state.shipsLeft.cruiser.left = 2;
+  state.shipsLeft.destroyer.left = 3;
+  state.shipsLeft.submarine.left = 4;
+  for (let key in state.grid) {
+    state.grid[key].probabilityIndex = 0;
+    state.grid[key].isUsable = true;
+    state.grid[key].state = "grid-index";
+  }
+};
+
 export const calculateProbability = function (state) {
   for (const ship in state.shipsLeft) {
     // Index calculation on horizontal axis
     for (let row = 0; row < 10; row++) {
       for (let col = 0; col < 10; col++) {
         const shipLength = +state.shipsLeft[ship].length;
+        const shipsLeft = +state.shipsLeft[ship].left;
         let canPlaceH = true;
         let canPlaceV = true;
         // Checking if ship is in the borders of grid
@@ -73,21 +87,16 @@ export const calculateProbability = function (state) {
         }
         if (canPlaceH) {
           for (let len = 0; len < shipLength; len++) {
-            if (state.grid[`${row}-${col + len}`].isUsable) {
-              state.grid[`${row}-${col + len}`].probabilityIndex +=
-                +state.shipsLeft[ship].left;
-            }
+            state.grid[`${row}-${col + len}`].probabilityIndex += shipsLeft;
           }
         }
         if (canPlaceV) {
           for (let len = 0; len < shipLength; len++) {
-            // Bug fix to not count two times the initial cell
-            if (canPlaceH && len == 0) continue;
-            if (state.grid[`${row + len}-${col}`].isUsable) {
-              state.grid[`${row + len}-${col}`].probabilityIndex +=
-                +state.shipsLeft[ship].left;
-            }
+            state.grid[`${row + len}-${col}`].probabilityIndex += shipsLeft;
           }
+        }
+        if (canPlaceH && canPlaceV && shipLength == 1) {
+          state.grid[`${row}-${col}`].probabilityIndex -= shipsLeft;
         }
       }
     }

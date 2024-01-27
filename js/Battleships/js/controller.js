@@ -7,8 +7,8 @@ const controlUpdateCheckboxState = function (newCheckboxState) {
 
 const controlGridClick = function (row, col) {
   const checkbox = model.state.currentCheckbox;
-  if (actions[checkbox]) {
-    actions[checkbox](model.state, +row, +col);
+  if (["shot", "hit", "sunk"].includes(checkbox)) {
+    model[checkbox](model.state, +row, +col);
   } else {
     return;
   }
@@ -17,16 +17,10 @@ const controlGridClick = function (row, col) {
   View.updateUI(model.state);
 };
 
-const actions = {
-  shot: (state, row, col) => {
-    model.shot(state, row, col);
-  },
-  hit: (state, row, col) => {
-    model.hit(state, row, col);
-  },
-  sunk: (state, row, col) => {
-    model.sunk(state, row, col);
-  },
+const controlReset = function () {
+  model.resetGrid(model.state);
+  model.calculateProbability(model.state);
+  View.updateUI(model.state);
 };
 
 const init = function () {
@@ -36,6 +30,7 @@ const init = function () {
   View.updateUI(model.state);
   View.addHandlerCheckboxes(model.state, controlUpdateCheckboxState);
   View.addHandlerGridClick(controlGridClick);
+  View.addHandlerReset(controlReset);
 };
 
 init();
