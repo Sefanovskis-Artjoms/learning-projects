@@ -170,6 +170,12 @@ export const hit = function (state, row, col) {
     _placeStandAloneHit(state, row, col, cell);
     return;
   }
+
+  // Adding another hit to the ship
+  if (adjacentHits.length == 1) {
+    _placeAddedHit(state, row, col, cell);
+    return;
+  }
 };
 
 export const sunk = function (state, row, col) {
@@ -185,6 +191,22 @@ const _placeStandAloneHit = function (state, row, col, cell) {
   cell.state = "grid-hit";
   cell.isUsable = false;
   // Update ship adjacent cell info
+  _updateAdjacent(state);
+};
+
+// Logic for adding hit for a ship
+const _placeAddedHit = function (state, row, col, cell) {
+  const shipIndex = _getShipsByTarget(state, row, col);
+  const ship = state.shipRecord.ships[shipIndex[0]];
+  // Can't add hit to the longest ship
+  if (ship.isLongestShipLeft(state)) return;
+  state.shipRecord.possibleHitsLeft--;
+  // Assigning given cell as a part of the ship
+  ship.addCell(state, row, col);
+  // Setting state in the gird for given cell
+  cell.state = "grid-hit";
+  cell.isUsable = false;
+  // Updating adjacent cell info for all ships
   _updateAdjacent(state);
 };
 
@@ -211,4 +233,24 @@ const _clearAdjacent = function (state) {
       cell.isUsable = true;
     }
   }
+};
+
+// Function returns array with indexes that correspond to the ships in shipRecord that have given cell(row+col) as adjacent cell
+const _getShipsByTarget = function (state, row, col) {
+  const shipIndexes = [];
+  // Iterate over ships in the shipRecord
+  for (let i = 0; i < state.shipRecord.ships.length; i++) {
+    const ship = state.shipRecord.ships[i];
+    // Iterates through known cells of the ship
+    for (let j = 0; j < ship.cells.length; j++) {
+      // Iterates over all adjacent cells
+      for (const key in ship.cells[j].adjacentCells) {
+        const cell = ship.cells[j].adjacentCells[key];
+        if (cell?.row == row && cell?.col == col) {
+          shipIndexes.push(i);
+        }
+      }
+    }
+  }
+  return shipIndexes;
 };

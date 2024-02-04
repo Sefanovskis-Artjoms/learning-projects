@@ -26,6 +26,12 @@ export default class Ship {
     this._addAdjacentCells(state);
   }
 
+  addCell(state, row, col) {
+    this.cells.push({ row, col });
+    this.shiplength++;
+    this._addAdjacentCells(state);
+  }
+
   // Function sets into state the adjacent cell info of the ship
   createAdjacent(state) {
     this._placeKillzone(state);
@@ -49,7 +55,7 @@ export default class Ship {
   }
   _placeTargets(state) {
     // If current ship is the longest ship that is left then function not placing targets
-    let longestShip = this._isLongestShipLeft(state);
+    let longestShip = this.isLongestShipLeft(state);
     if (longestShip) return;
 
     // Iterates through known cells of the ship
@@ -91,7 +97,7 @@ export default class Ship {
     }
   }
 
-  _isLongestShipLeft(state) {
+  isLongestShipLeft(state) {
     // Get the length of the current ship
     const currentShipLength = this.cells.length;
 
