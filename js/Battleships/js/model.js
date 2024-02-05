@@ -160,20 +160,25 @@ export const hit = function (state, row, col) {
   // Removing hit logic
   if (cell.state == "grid-hit") {
     // Removing stand alone hit
+    if (!adjacentHits.length) {
+      _removeStandAloneHit(state, row, col, cell);
+      return;
+    }
     // Removing hit with one adjacent hit
+    if (!adjacentHits.length) {
+      // _removeEdgeHit();
+      return;
+    }
     // Removing hit between thow adjacent hits
+    // _removeMiddleHit();
     return;
   }
 
   // Checking if there are hits left to use
-  if (state.shipRecord.possibleHitsLeft <= 0) {
-    return;
-  }
+  if (state.shipRecord.possibleHitsLeft <= 0) return;
 
   // If its a stand alone hit then checking if there are any new unrevealed ships
-  if (!adjacentHits.length && state.shipRecord.ships.length >= 10) {
-    return;
-  }
+  if (!adjacentHits.length && state.shipRecord.ships.length >= 10) return;
 
   // Processing stand alone hit
   if (!adjacentHits.length) {
@@ -252,6 +257,24 @@ const _mergeShips = function (state, row, col, cell) {
   _updateAdjacent(state);
 };
 
+// Logic for removing single hit
+const _removeStandAloneHit = function (state, row, col, cell) {
+  // Updating availabe hit count in shipRecord
+  state.shipRecord.possibleHitsLeft++;
+  // Removing single cell ship from the record
+  const shipIndex = _findShip(state, row, col);
+  state.shipRecord.ships.splice(shipIndex, 1);
+  // Remocing hit from the grid
+  if (cell.containsShot) {
+    cell.state = "grid-shot";
+  } else {
+    cell.state = "grid-index";
+    cell.isUsable = true;
+  }
+  // Update ship adjacent cell info
+  _updateAdjacent(state);
+};
+
 // Helper function that updates adjacent cell data for each ship
 const _updateAdjacent = function (state) {
   // Updates known ship count for every length
@@ -276,6 +299,19 @@ const _clearAdjacent = function (state) {
       }
       cell.state = "grid-index";
       cell.isUsable = true;
+    }
+  }
+};
+
+// Function returns index of the ship that contains cell with given row and col
+const _findShip = function (state, row, col) {
+  // Iterate over ships in the shipRecord
+  for (let i = 0; i < state.shipRecord.ships.length; i++) {
+    const ship = state.shipRecord.ships[i];
+    // Iterates through known cells of the ship
+    for (let j = 0; j < ship.cells.length; j++) {
+      // Returning index of the ship that contains given cell
+      if (ship.cells[j].row == row && ship.cells[j].col == col) return i;
     }
   }
 };
