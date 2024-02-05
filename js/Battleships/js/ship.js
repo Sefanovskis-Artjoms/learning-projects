@@ -32,6 +32,23 @@ export default class Ship {
     this._addAdjacentCells(state);
   }
 
+  // Returns false if it's impossible to make ship longer e.g. ship already is 4 tiles long or all longer ship slots are occupied
+  canExpand(state) {
+    // Get the length of the current ship
+    const currentShipLength = this.cells.length;
+
+    // If the ship is already at maximum length, it can't be expanded
+    if (currentShipLength == 4) return false;
+
+    // Getting count of known ships grouped by length with length on one tile longer than given ship
+    const element = state.shipRecord.knownShipInstances[currentShipLength];
+
+    // If there is already maximum count of bigger ships then current ship cant expand
+    if (element.instances >= element.maxAllowed) return false;
+
+    return true;
+  }
+
   // Function sets into state the adjacent cell info of the ship
   createAdjacent(state) {
     this._placeKillzone(state);
@@ -54,9 +71,7 @@ export default class Ship {
     }
   }
   _placeTargets(state) {
-    // If current ship is the longest ship that is left then function not placing targets
-    let longestShip = this.isLongestShipLeft(state);
-    if (longestShip) return;
+    const canExpand = this.canExpand(state);
 
     // Iterates through known cells of the ship
     for (let i = 0; i < this.cells.length; i++) {
@@ -64,21 +79,32 @@ export default class Ship {
       for (const key in this.cells[i].adjacentCells) {
         const element = this.cells[i].adjacentCells[key];
         // Filtering out only existing adjacent cells on straight axis
-        if (!element.exists || !state.straightAxis.includes(key)) {
+        if (!element.exists || !state.straightAxis.includes(key)) continue;
+
+        // Helper variables
+        const gridCell = state.grid[`${element.row}-${element.col}`];
+        const isIndex = element.cell.state == "grid-index";
+        const isTarget = element.cell.state == "grid-target";
+
+        // Placing killzone if ship cant expand
+        if (!canExpand && (isIndex || isTarget)) {
+          gridCell.isUsable = false;
+          gridCell.state = "grid-killzone";
           continue;
         }
         // Adding target only to pure cell
-        if (element.cell.state == "grid-index") {
-          state.grid[`${element.row}-${element.col}`].isUsable = false;
-          state.grid[`${element.row}-${element.col}`].state = "grid-target";
+        if (isIndex) {
+          gridCell.isUsable = false;
+          gridCell.state = "grid-target";
           continue;
         }
         // If cell already has target, then checking if it is eligable to be merged with ship next to it, if not then cell is converted to killzone
-        if (element.cell.state == "grid-target") {
+        if (isTarget) {
           // Killzone if other ships length and current ships length in sum are more than 3
+          // Or if all possible new ship length ships exist
           if (!this._isAdjacentShipEligable(element, state)) {
-            state.grid[`${element.row}-${element.col}`].isUsable = false;
-            state.grid[`${element.row}-${element.col}`].state = "grid-killzone";
+            gridCell.isUsable = false;
+            gridCell.state = "grid-killzone";
           }
         }
       }
@@ -95,24 +121,6 @@ export default class Ship {
         element.col
       );
     }
-  }
-
-  isLongestShipLeft(state) {
-    // Get the length of the current ship
-    const currentShipLength = this.cells.length;
-
-    // Check if there's any ship left with a greater length
-    for (const ship in state.shipsLeft) {
-      if (
-        state.shipsLeft[ship].shipLength > currentShipLength &&
-        state.shipsLeft[ship].left > 0
-      ) {
-        return false;
-      }
-    }
-
-    // If no ship left has a greater length, return true
-    return true;
   }
 
   // Helper function for _placeTargets function to determine if current and adjacent ships are compatible to combine

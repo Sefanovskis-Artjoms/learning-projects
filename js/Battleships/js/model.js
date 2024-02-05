@@ -1,3 +1,5 @@
+// TO DO:
+// Rewrite canExpnad function
 import Ship from "./ship.js";
 
 export const state = {
@@ -10,11 +12,21 @@ export const state = {
     submarine: { shipLength: 1, left: 4 },
   },
   shipRecord: {
-    possibleHitsLeft: 16,
+    possibleHitsLeft: 20,
     ships: [],
+    knownShipInstances: [],
   },
   straightAxis: ["up", "down", "right", "left"],
   diagonalAxis: ["up-right", "up-left", "down-right", "down-left"],
+};
+
+const _setKnownShipInstances = function (state) {
+  state.shipRecord.knownShipInstances = [
+    { shipLength: 1, instances: 0, maxAllowed: 10 },
+    { shipLength: 2, instances: 0, maxAllowed: 6 },
+    { shipLength: 3, instances: 0, maxAllowed: 3 },
+    { shipLength: 4, instances: 0, maxAllowed: 1 },
+  ];
 };
 
 export const setCurrentCheckbox = function (newCurrentCheckbox) {
@@ -63,7 +75,7 @@ export const resetGrid = function (state) {
   state.shipsLeft.cruiser.left = 2;
   state.shipsLeft.destroyer.left = 3;
   state.shipsLeft.submarine.left = 4;
-  state.shipRecord.possibleHitsLeft = 16;
+  state.shipRecord.possibleHitsLeft = 20;
   state.shipRecord.ships = [];
   for (let key in state.grid) {
     state.grid[key].probabilityIndex = 0;
@@ -198,8 +210,8 @@ const _placeStandAloneHit = function (state, row, col, cell) {
 const _placeAddedHit = function (state, row, col, cell) {
   const shipIndex = _getShipsByTarget(state, row, col);
   const ship = state.shipRecord.ships[shipIndex[0]];
-  // Can't add hit to the longest ship
-  if (ship.isLongestShipLeft(state)) return;
+  // Return if ship cannot be longer
+  if (!ship.canExpand(state)) return;
   state.shipRecord.possibleHitsLeft--;
   // Assigning given cell as a part of the ship
   ship.addCell(state, row, col);
@@ -212,6 +224,9 @@ const _placeAddedHit = function (state, row, col, cell) {
 
 // Helper function that updates adjacent cell data for each ship
 const _updateAdjacent = function (state) {
+  // Updates known ship count for every length
+  // Needed for correct display of targets and to control if hit can be placed
+  _updateKnownShipInstances(state);
   // Clearing old adjacent cell info
   _clearAdjacent(state);
   // Creating new adjacent cell infor for each ship
@@ -253,4 +268,20 @@ const _getShipsByTarget = function (state, row, col) {
     }
   }
   return shipIndexes;
+};
+
+const _updateKnownShipInstances = function (state) {
+  // Resets known ship record for the ease of updating it
+  _setKnownShipInstances(state);
+  // Counting instance count for every ship length
+  for (let i = 0; i < state.shipRecord.ships.length; i++) {
+    const shipLength = state.shipRecord.ships[i].shiplength;
+    state.shipRecord.knownShipInstances[shipLength - 1].instances++;
+
+    if (shipLength == 1) continue;
+    // Decreases maximum possible ship count in every length that is smaller than current ship
+    for (let i = shipLength - 2; i >= 0; i--) {
+      state.shipRecord.knownShipInstances[i].maxAllowed--;
+    }
+  }
 };
