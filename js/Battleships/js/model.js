@@ -186,6 +186,13 @@ export const hit = function (state, row, col) {
     _placeAddedHit(state, row, col, cell);
     return;
   }
+
+  // Merging two ships
+  if (adjacentHits.length == 2) {
+    _mergeShips(state, row, col, cell);
+    return;
+  }
+  return;
 };
 
 export const sunk = function (state, row, col) {
@@ -196,7 +203,7 @@ const _placeStandAloneHit = function (state, row, col, cell) {
   // Updating availabe hit count in shipRecord
   state.shipRecord.possibleHitsLeft--;
   // Adding single cell ship to the record
-  state.shipRecord.ships.push(new Ship(state, { row, col }));
+  state.shipRecord.ships.push(new Ship(state, [{ row, col }]));
   // Placing hit into the grid
   cell.state = "grid-hit";
   cell.isUsable = false;
@@ -217,6 +224,31 @@ const _placeAddedHit = function (state, row, col, cell) {
   cell.state = "grid-hit";
   cell.isUsable = false;
   // Updating adjacent cell info for all ships
+  _updateAdjacent(state);
+};
+
+// Logic for adding hit between two ships
+const _mergeShips = function (state, row, col, cell) {
+  // Contains array of two elements that stand for index in the ship record
+  const shipsToMerge = _getShipsByTarget(state, row, col);
+  // Array of cells for the new ship
+  const newCells = [
+    ...state.shipRecord.ships[shipsToMerge[0]].cells,
+    ...state.shipRecord.ships[shipsToMerge[1]].cells,
+    { row, col },
+  ];
+  // Deleting small seperate ships by filtering out existing ship array
+  state.shipRecord.ships = state.shipRecord.ships.filter((ship, index) => {
+    if (!shipsToMerge.includes(index)) return ship;
+  });
+  // Creating new bigger ship
+  state.shipRecord.ships.push(new Ship(state, newCells));
+  // Updating availabe hit count in shipRecord
+  state.shipRecord.possibleHitsLeft--;
+  // Placing hit into the grid
+  cell.state = "grid-hit";
+  cell.isUsable = false;
+  // Update ship adjacent cell info
   _updateAdjacent(state);
 };
 

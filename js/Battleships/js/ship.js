@@ -21,7 +21,7 @@ export default class Ship {
   sunk = false;
 
   constructor(state, cells) {
-    this.cells.push({ ...cells });
+    this.cells.push(...cells);
     this.shiplength = this.cells.length;
     this._addAdjacentCells(state);
   }
@@ -103,7 +103,6 @@ export default class Ship {
           const newShipLength = this._potentialNewShipLength(element, state);
           // Killzone if other ships length and current ships length in sum are more than 4
           // Or if all possible new ship length ships exist
-          console.log(newShipLength);
           if (
             newShipLength > 4 ||
             state.shipRecord.knownShipInstances[newShipLength - 1].maxAllowed <=
