@@ -1,5 +1,3 @@
-// TO DO:
-// Rewrite canExpnad function
 import Ship from "./ship.js";
 
 export const state = {
@@ -131,7 +129,7 @@ export const calculateProbability = function (state) {
 export const shot = function (state, row, col) {
   const cell = state.grid[`${row}-${col}`];
   // Adding hit
-  if (cell.isUsable) {
+  if (cell.isUsable || cell.state == "grid-target") {
     cell.isUsable = false;
     cell.containsShot = true;
     cell.state = "grid-shot";
