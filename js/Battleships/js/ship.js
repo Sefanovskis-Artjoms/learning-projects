@@ -100,9 +100,15 @@ export default class Ship {
         }
         // If cell already has target, then checking if it is eligable to be merged with ship next to it, if not then cell is converted to killzone
         if (isTarget) {
-          // Killzone if other ships length and current ships length in sum are more than 3
+          const newShipLength = this._potentialNewShipLength(element, state);
+          // Killzone if other ships length and current ships length in sum are more than 4
           // Or if all possible new ship length ships exist
-          if (!this._isAdjacentShipEligable(element, state)) {
+          console.log(newShipLength);
+          if (
+            newShipLength > 4 ||
+            state.shipRecord.knownShipInstances[newShipLength - 1].maxAllowed <=
+              state.shipRecord.knownShipInstances[newShipLength - 1].instances
+          ) {
             gridCell.isUsable = false;
             gridCell.state = "grid-killzone";
           }
@@ -124,7 +130,7 @@ export default class Ship {
   }
 
   // Helper function for _placeTargets function to determine if current and adjacent ships are compatible to combine
-  _isAdjacentShipEligable(element, state) {
+  _potentialNewShipLength(element, state) {
     let totalLength = 0;
     // Iterate over all ships in the shipRecord
     for (let i = 0; i < state.shipRecord.ships.length; i++) {
@@ -140,10 +146,7 @@ export default class Ship {
         }
       }
     }
-    if (totalLength > 3) {
-      return false;
-    }
-    return true;
+    return totalLength + 1;
   }
 
   // Static helper function to get all adjacent cells for a given one
