@@ -170,7 +170,7 @@ export const hit = function (state, row, col) {
       return;
     }
     // Removing hit between two adjacent hits
-    // _removeMiddleHit();
+    _removeMiddleHit(state, row, col, cell);
     return;
   }
 
@@ -265,7 +265,7 @@ const _removeStandAloneHit = function (state, row, col, cell) {
   const shipIndex = _findShip(state, row, col);
   // Removing single cell ship from the record
   state.shipRecord.ships.splice(shipIndex, 1);
-  // Remocing hit from the grid
+  // Removing hit from the grid
   if (cell.containsShot) {
     cell.state = "grid-shot";
   } else {
@@ -284,7 +284,7 @@ const _removeEdgeHit = function (state, row, col, cell) {
   const shipIndex = _findShip(state, row, col);
   // Removing cell from ship
   state.shipRecord.ships[shipIndex].removeCell(row, col);
-  // Remocing hit from the grid
+  // Removing hit from the grid
   if (cell.containsShot) {
     cell.state = "grid-shot";
   } else {
@@ -295,6 +295,32 @@ const _removeEdgeHit = function (state, row, col, cell) {
   _updateAdjacent(state);
 };
 
+// Logic for removing hit in the middle of the ship
+const _removeMiddleHit = function (state, row, col, cell) {
+  // Updating availabe hit count in shipRecord
+  state.shipRecord.possibleHitsLeft++;
+  // Finding location of the ship in shipRecord
+  const shipIndex = _findShip(state, row, col);
+  // Getting array of two elemets with cells from each side of the given cell
+  const newShipCells = state.shipRecord.ships[shipIndex].getSplitCells(
+    row,
+    col
+  );
+  // Removing current ship
+  state.shipRecord.ships.splice(shipIndex, 1);
+  // Creating two new ships in its place
+  state.shipRecord.ships.push(new Ship(state, newShipCells[0]));
+  state.shipRecord.ships.push(new Ship(state, newShipCells[1]));
+  // Removing hit from the grid
+  if (cell.containsShot) {
+    cell.state = "grid-shot";
+  } else {
+    cell.state = "grid-index";
+    cell.isUsable = true;
+  }
+  // Update ship adjacent cell info
+  _updateAdjacent(state);
+};
 // Helper function that updates adjacent cell data for each ship
 const _updateAdjacent = function (state) {
   // Updates known ship count for every length

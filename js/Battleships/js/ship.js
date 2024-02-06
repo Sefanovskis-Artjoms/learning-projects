@@ -57,6 +57,24 @@ export default class Ship {
     return true;
   }
 
+  // Function used for splitting ship into two ships, returns array of two arrays with cells on each side from given cell
+  getSplitCells(row, col) {
+    // Arrays that correspond to the cells relative to the given cell
+    const upOrLeft = [];
+    const downOrRight = [];
+
+    // Iterating through cells of the ship
+    for (let i = 0; i < this.cells.length; i++) {
+      const cell = this.cells[i];
+      if (cell.row == row && cell.col == col) continue;
+      if (cell.row > row || cell.col > col) downOrRight.push(cell);
+      else {
+        upOrLeft.push(cell);
+      }
+    }
+    return [upOrLeft, downOrRight];
+  }
+
   // Function sets into state the adjacent cell info of the ship
   createAdjacent(state) {
     this._placeKillzone(state);
