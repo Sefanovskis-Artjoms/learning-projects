@@ -1,5 +1,5 @@
 export default class Ship {
-  shiplength;
+  shipLength;
   cells = [];
   /* cells = [
     {
@@ -22,18 +22,18 @@ export default class Ship {
 
   constructor(state, cells) {
     this.cells.push(...cells);
-    this.shiplength = this.cells.length;
+    this.shipLength = this.cells.length;
     this._addAdjacentCells(state);
   }
 
   addCell(state, row, col) {
     this.cells.push({ row, col });
-    this.shiplength++;
+    this.shipLength++;
     this._addAdjacentCells(state);
   }
 
   removeCell(row, col) {
-    this.shiplength--;
+    this.shipLength--;
     for (let i = 0; i < this.cells.length; i++) {
       const cell = this.cells[i];
       if (cell.row == row && cell.col == col) this.cells.splice(i, 1);
@@ -97,7 +97,8 @@ export default class Ship {
     }
   }
   _placeTargets(state) {
-    const canExpand = this.canExpand(state);
+    // If current ship is sunk then it cent expand in any case
+    const canExpand = this.sunk ? false : this.canExpand(state);
 
     // Iterates through known cells of the ship
     for (let i = 0; i < this.cells.length; i++) {
@@ -166,7 +167,7 @@ export default class Ship {
         for (const key in ship.cells[j].adjacentCells) {
           const cell = ship.cells[j].adjacentCells[key];
           if (cell?.row == element.row && cell?.col == element.col) {
-            totalLength += ship.shiplength;
+            totalLength += ship.shipLength;
           }
         }
       }

@@ -4,10 +4,10 @@ export const state = {
   currentCheckbox: null,
   grid: {},
   shipsLeft: {
-    battleship: { shipLength: 4, left: 1 },
-    cruiser: { shipLength: 3, left: 2 },
-    destroyer: { shipLength: 2, left: 3 },
-    submarine: { shipLength: 1, left: 4 },
+    battleship: { shipLength: 4, shipsLeft: 1 },
+    cruiser: { shipLength: 3, shipsLeft: 2 },
+    destroyer: { shipLength: 2, shipsLeft: 3 },
+    submarine: { shipLength: 1, shipsLeft: 4 },
   },
   shipRecord: {
     possibleHitsLeft: 20,
@@ -69,10 +69,10 @@ export const resetProbabilityIndex = function (state) {
 
 export const resetGrid = function (state) {
   state.currentCheckbox = null;
-  state.shipsLeft.battleship.left = 1;
-  state.shipsLeft.cruiser.left = 2;
-  state.shipsLeft.destroyer.left = 3;
-  state.shipsLeft.submarine.left = 4;
+  state.shipsLeft.battleship.shipsLeft = 1;
+  state.shipsLeft.cruiser.shipsLeft = 2;
+  state.shipsLeft.destroyer.shipsLeft = 3;
+  state.shipsLeft.submarine.shipsLeft = 4;
   state.shipRecord.possibleHitsLeft = 20;
   state.shipRecord.ships = [];
   for (let key in state.grid) {
@@ -89,7 +89,7 @@ export const calculateProbability = function (state) {
     for (let row = 0; row < 10; row++) {
       for (let col = 0; col < 10; col++) {
         const shipLength = +state.shipsLeft[ship].shipLength;
-        const shipsLeft = +state.shipsLeft[ship].left;
+        const shipsLeft = +state.shipsLeft[ship].shipsLeft;
         let canPlaceH = true;
         let canPlaceV = true;
         // Checking if ship is in the borders of grid
@@ -201,7 +201,31 @@ export const hit = function (state, row, col) {
 };
 
 export const sunk = function (state, row, col) {
-  console.log(state.shipRecord);
+  const cell = state.grid[`${row}-${col}`];
+  // Filtering out only relevant cells
+  if (!["grid-hit", "grid-destroyed"].includes(cell.state)) return;
+  // Getting information about ship
+  const shipIndex = _findShip(state, row, col);
+  const ship = state.shipRecord.ships[shipIndex];
+  // Toggle ship state
+  ship.sunk = ship.sunk ? (ship.sunk = false) : (ship.sunk = true);
+  // Setting new state
+  const newState = ship.sunk ? "grid-destroyed" : "grid-hit";
+  // Iterating through cells of the ship to change their state in grid
+  for (let i = 0; i < ship.cells.length; i++) {
+    const cell = ship.cells[i];
+    state.grid[`${cell.row}-${cell.col}`].state = newState;
+  }
+  // Update ship adjacent cell info
+  _updateAdjacent(state);
+  // Updating count of ships that are left
+  for (const key in state.shipsLeft) {
+    const shipCategoryInfo = state.shipsLeft[key];
+    // Filtering only appropriate ship type
+    if (ship.shipLength != shipCategoryInfo.shipLength) continue;
+    // Based on ship state, updating accordingly how many ships are left
+    ship.sunk ? shipCategoryInfo.shipsLeft-- : shipCategoryInfo.shipsLeft++;
+  }
 };
 
 const _placeStandAloneHit = function (state, row, col, cell) {
@@ -387,7 +411,7 @@ const _updateKnownShipInstances = function (state) {
   _setKnownShipInstances(state);
   // Counting instance count for every ship length
   for (let i = 0; i < state.shipRecord.ships.length; i++) {
-    const shipLength = state.shipRecord.ships[i].shiplength;
+    const shipLength = state.shipRecord.ships[i].shipLength;
     state.shipRecord.knownShipInstances[shipLength - 1].instances++;
 
     if (shipLength == 1) continue;

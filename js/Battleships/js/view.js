@@ -79,10 +79,10 @@ class View {
           : (uiEl.innerHTML = this._shotVariations[stateEl.state]);
       }
     }
-    this._battleships = state.shipsLeft["battleship"].left;
-    this._cruisers = state.shipsLeft["cruiser"].left;
-    this._destroyers = state.shipsLeft["destroyer"].left;
-    this._submarines = state.shipsLeft["submarine"].left;
+    this._battleships.innerHTML = state.shipsLeft["battleship"].shipsLeft;
+    this._cruisers.innerHTML = state.shipsLeft["cruiser"].shipsLeft;
+    this._destroyers.innerHTML = state.shipsLeft["destroyer"].shipsLeft;
+    this._submarines.innerHTML = state.shipsLeft["submarine"].shipsLeft;
   }
 
   addHandlerGridClick(handler) {
