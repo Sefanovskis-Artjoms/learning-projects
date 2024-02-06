@@ -66,7 +66,27 @@ class View {
     this._submarines.innerHTML = 4;
   }
 
+  _getHeatmapColor(maxVal, minVal, val) {
+    const maxColor = [184, 46, 56];
+    const minColor = [240, 136, 144];
+    // Creating a deep copy of one of the colors
+    const result = JSON.parse(JSON.stringify(maxColor));
+
+    const factor = (val - maxVal) / (minVal - maxVal);
+    for (let i = 0; i < 3; i++) {
+      result[i] = Math.round(result[i] + factor * (minColor[i] - maxColor[i]));
+    }
+    return `rgb(${result[0]},${result[1]},${result[2]})`;
+  }
+
   updateUI(state) {
+    let maxVal = state.grid[`0-0`].probabilityIndex;
+    let minVal = state.grid[`0-0`].probabilityIndex;
+    for (const key in state.grid) {
+      const cell = state.grid[key];
+      if (cell.probabilityIndex > maxVal) maxVal = cell.probabilityIndex;
+      if (cell.probabilityIndex < minVal) minVal = cell.probabilityIndex;
+    }
     for (let row = 0; row < 10; row++) {
       for (let col = 0; col < 10; col++) {
         const stateEl = state.grid[`${row}-${col}`];
@@ -77,6 +97,11 @@ class View {
         stateEl.isUsable
           ? (uiEl.innerHTML = stateEl.probabilityIndex)
           : (uiEl.innerHTML = this._shotVariations[stateEl.state]);
+        uiEl.style.color = this._getHeatmapColor(
+          maxVal,
+          minVal,
+          stateEl.probabilityIndex
+        );
       }
     }
     this._battleships.innerHTML = state.shipsLeft["battleship"].shipsLeft;

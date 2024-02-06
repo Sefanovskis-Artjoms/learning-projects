@@ -3,9 +3,18 @@
   --color-main-1-lighter: #617289;
   --color-main-1-darker: #001739;
   --color-main-2: #e63946;
+  --color-heatmap-max: rgb(184, 46, 56);
+  --color-heatmap-min: rgb(240, 136, 144);
   --color-background: #f1faee;
   --color-grid-background: #a8dadc;
   --color-grey: #d9d9d9;
+  /*
+  rgb(184, 46, 56) 
+  b82e38
+  rgb(238, 116, 126)
+  rgb(243, 156, 163)
+  rgb(245, 176, 181);
+  */
 }
 
 * {
@@ -110,24 +119,24 @@ body {
 }
 
 [data-state*="grid-shot"] {
-  color: var(--color-main-1);
+  color: var(--color-main-1) !important;
 }
 
 [data-state*="grid-killzone"] {
-  color: var(--color-main-1-darker);
+  color: var(--color-main-1-darker) !important;
 }
 
 [data-state*="grid-target"] {
-  color: var(--color-main-2);
+  color: var(--color-main-2) !important;
 }
 
 [data-state*="grid-hit"] {
-  color: var(--color-main-2);
+  color: var(--color-main-2) !important;
   background-color: var(--color-main-1);
 }
 
 [data-state*="grid-destroyed"] {
-  color: var(--color-grey);
+  color: var(--color-grey) !important;
   background-color: var(--color-main-1-darker);
 }
 
