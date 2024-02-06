@@ -165,11 +165,11 @@ export const hit = function (state, row, col) {
       return;
     }
     // Removing hit with one adjacent hit
-    if (!adjacentHits.length) {
-      // _removeEdgeHit();
+    if (adjacentHits.length == 1) {
+      _removeEdgeHit(state, row, col, cell);
       return;
     }
-    // Removing hit between thow adjacent hits
+    // Removing hit between two adjacent hits
     // _removeMiddleHit();
     return;
   }
@@ -261,9 +261,29 @@ const _mergeShips = function (state, row, col, cell) {
 const _removeStandAloneHit = function (state, row, col, cell) {
   // Updating availabe hit count in shipRecord
   state.shipRecord.possibleHitsLeft++;
-  // Removing single cell ship from the record
+  // Finding location of the ship in shipRecord
   const shipIndex = _findShip(state, row, col);
+  // Removing single cell ship from the record
   state.shipRecord.ships.splice(shipIndex, 1);
+  // Remocing hit from the grid
+  if (cell.containsShot) {
+    cell.state = "grid-shot";
+  } else {
+    cell.state = "grid-index";
+    cell.isUsable = true;
+  }
+  // Update ship adjacent cell info
+  _updateAdjacent(state);
+};
+
+// Logic for removing hit on the edge of the ship
+const _removeEdgeHit = function (state, row, col, cell) {
+  // Updating availabe hit count in shipRecord
+  state.shipRecord.possibleHitsLeft++;
+  // Finding location of the ship in shipRecord
+  const shipIndex = _findShip(state, row, col);
+  // Removing cell from ship
+  state.shipRecord.ships[shipIndex].removeCell(row, col);
   // Remocing hit from the grid
   if (cell.containsShot) {
     cell.state = "grid-shot";

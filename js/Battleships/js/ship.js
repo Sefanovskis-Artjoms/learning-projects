@@ -32,6 +32,14 @@ export default class Ship {
     this._addAdjacentCells(state);
   }
 
+  removeCell(row, col) {
+    this.shiplength--;
+    for (let i = 0; i < this.cells.length; i++) {
+      const cell = this.cells[i];
+      if (cell.row == row && cell.col == col) this.cells.splice(i, 1);
+    }
+  }
+
   // Returns false if it's impossible to make ship longer e.g. ship already is 4 tiles long or all longer ship slots are occupied
   canExpand(state) {
     // Get the length of the current ship
