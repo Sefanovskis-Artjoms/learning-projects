@@ -207,6 +207,14 @@ export const sunk = function (state, row, col) {
   // Getting information about ship
   const shipIndex = _findShip(state, row, col);
   const ship = state.shipRecord.ships[shipIndex];
+  // Preventing destruction of too may one type ships
+  for (const key in state.shipsLeft) {
+    const shipCategoryInfo = state.shipsLeft[key];
+    // Filtering only appropriate ship type
+    if (ship.shipLength != shipCategoryInfo.shipLength) continue;
+    // Based on ship state, updating accordingly how many ships are left
+    if (shipCategoryInfo.shipsLeft <= 0) return;
+  }
   // Toggle ship state
   ship.sunk = ship.sunk ? (ship.sunk = false) : (ship.sunk = true);
   // Setting new state
