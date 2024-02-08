@@ -70,7 +70,7 @@ class View {
     const maxColor = [184, 46, 56];
     const minColor = [240, 136, 144];
     // Creating a deep copy of one of the colors
-    const result = JSON.parse(JSON.stringify(maxColor));
+    const result = [...maxColor];
 
     const factor = (val - maxVal) / (minVal - maxVal);
     for (let i = 0; i < 3; i++) {
