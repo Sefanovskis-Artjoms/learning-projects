@@ -212,8 +212,8 @@ export const sunk = function (state, row, col) {
     const shipCategoryInfo = state.shipsLeft[key];
     // Filtering only appropriate ship type
     if (ship.shipLength != shipCategoryInfo.shipLength) continue;
-    // Based on ship state, updating accordingly how many ships are left
-    if (shipCategoryInfo.shipsLeft <= 0) return;
+    // Restricting possibility to remove too many one type ships
+    if (shipCategoryInfo.shipsLeft <= 0 && !ship.sunk) return;
   }
   // Toggle ship state
   ship.sunk = ship.sunk ? (ship.sunk = false) : (ship.sunk = true);
