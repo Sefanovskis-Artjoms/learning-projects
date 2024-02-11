@@ -12,7 +12,7 @@ The projects are organized into different categories based on technology stacks 
 
 This is the sequence in what I have completed each project
 
-1. [(PHP) Simple internet store(Diploma project in technical school)](./php/1.Simple_Internet_Store/README.MD)
+1. [(PHP) Simple internet store(Diploma project in technical school)](./php/1.Simple_Internet_Store/)
 2. (JS) Simple calculator
 3. (JS) Sudoku game
 4. (PHP) Record keeping app for meat-factory in England
