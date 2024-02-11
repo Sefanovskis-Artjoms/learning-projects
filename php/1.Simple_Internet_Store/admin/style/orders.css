@@ -1,0 +1,105 @@
+.wrapper {
+  width: 100%;
+}
+.where-box {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: fit-content;
+  height: 3.2rem;
+  gap: 1.8rem;
+  margin-bottom: 3.2rem;
+  justify-content: left;
+}
+
+.where-btn:link,
+.where-btn:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  border: #555 3px solid;
+  padding: 0.9rem 1.8rem;
+}
+
+.where-btn:hover,
+.where-btn:active {
+  background-color: #555;
+  color: #f3f3f3;
+}
+
+.where-btn-active:link,
+.where-btn-active:visited {
+  background-color: #555;
+  color: #f3f3f3;
+}
+
+.where-btn-active:hover,
+.where-btn-active:active {
+  color: #555;
+  background: none;
+}
+
+.inner-table tbody tr:nth-child(odd) {
+  background-color: #f3f3f3;
+}
+
+.inner-table tbody {
+  font-size: 1.8rem;
+}
+
+.ver-table-input {
+  height: 2.6rem;
+  border: 1px solid #555;
+  font-family: "Roboto";
+  background-color: #f3f3f3;
+}
+
+.report-link:link,
+.report-link:visited {
+  text-decoration: none;
+  color: #e43314;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.report-link:hover,
+.report-link:active {
+  color: #555;
+}
+
+.text-inputfield {
+  width: 100%;
+  font-family: "Roboto";
+  outline: none;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.report-textarea {
+  margin-bottom: 0.8rem;
+}
+
+/* ****************** */
+/* Zem 704px  */
+/* ****************** */
+
+@media (max-width: 44em) {
+  .where-box {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 10rem;
+  }
+}
+
+/* ****************** */
+/* Zem 544px 
+/* ****************** */
+
+@media (max-width: 34em) {
+  .where-box {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 20rem;
+  }
+}

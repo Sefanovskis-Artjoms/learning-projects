@@ -1,0 +1,70 @@
+.container {
+  padding: 4.8rem 1.8rem 9.6rem 1.8rem;
+}
+
+.testimonials-header-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3.2rem;
+}
+
+.testimonials-header {
+  font-size: 4.8rem;
+  color: #1a1a1a;
+}
+
+.header-line {
+  display: inline-block;
+  border-top: 5px solid #e43314;
+  width: 5rem;
+}
+
+.table-data-box {
+  font-size: 1.8rem;
+  width: 100%;
+}
+.table-data-box tr td {
+  padding-bottom: 3.2rem;
+}
+
+.table-data-label {
+  width: 12rem;
+  vertical-align: top;
+}
+
+.review-checkbox,
+.review-rating {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.review-rating {
+  margin-bottom: 0.8rem;
+}
+
+.review-rating:focus {
+  outline: none;
+}
+
+.review-textarea {
+  display: block;
+  padding: 0.8rem;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.review-textarea {
+  outline: none;
+}
+
+.review-create-btn-box {
+  text-align: center;
+}
+
+.star-box {
+  display: flex;
+  gap: 0.8rem;
+  color: #ffa600;
+  font-size: 2.4rem;
+  padding-bottom: 2.4rem;
+}

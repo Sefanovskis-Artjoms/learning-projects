@@ -1,0 +1,250 @@
+/* /////////////////////////////// */
+/* Galvene */
+/* /////////////////////////////// */
+
+.head-container {
+  background-color: #111;
+  color: #fff;
+  padding: 3.2rem 0;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  max-width: 130rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: #e43314;
+  font-size: 3.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+h1:hover {
+  text-shadow: 0 0 5px #e43314;
+}
+
+.site-description {
+  text-transform: uppercase;
+  color: #e43314;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.head-info {
+  display: flex;
+  gap: 6.4rem;
+}
+
+.head-info-container {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.head-info-container i {
+  font-size: 2.4rem;
+  display: block;
+  background-color: #e43314;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 1.8rem;
+}
+
+.head-info-heading {
+  color: #e43314;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.head-info-content {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* /////////////////////////////// */
+/* Navigācija */
+/* /////////////////////////////// */
+
+.main-nav-section {
+  border-bottom: 1px solid #afafaf;
+}
+
+.main-nav-container {
+  position: relative;
+  max-width: 120rem;
+  padding: 1.6rem 3.2rem;
+  margin: 0 auto;
+  justify-content: left;
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.6rem;
+}
+.main-nav-link-last {
+  position: absolute;
+  right: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  color: #a2a2a2;
+  font-size: 1.6rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #e43314;
+}
+/* /////////////////////////////// */
+/* Mobīlā navigācija
+/* /////////////////////////////// */
+
+.btn-mobile-nav-close,
+.btn-mobile-nav-open {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+}
+
+.btn-mobile-nav-open-icon {
+  color: #000;
+  font-size: 3.6rem;
+}
+
+.btn-mobile-nav-close-icon {
+  color: #fff;
+  font-size: 3.6rem;
+}
+
+/* /////////////////////////////// */
+/* Kājene */
+/* /////////////////////////////// */
+.footer-div {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.copyright {
+  background-color: #111;
+  color: #e6e6e6 !important;
+  text-align: center;
+  padding: 1.2rem 0;
+}
+
+/* /////////////////////////////// */
+/* Mājaslapas galvenes media
+/* /////////////////////////////// */
+
+/* ****************** */
+/* Zem 944px */
+/* ****************** */
+
+/* /////////////////////////////// */
+/* Media moobīlajai navigācija
+/* /////////////////////////////// */
+
+@media (max-width: 59em) {
+  .btn-mobile-nav-open {
+    display: block;
+  }
+
+  .btn-mobile-nav-close {
+    display: block;
+    padding: 0 2.4rem 1.2rem 0;
+    text-align: right;
+    width: 100%;
+    border-bottom: 1px solid #303030;
+  }
+  .btn-mobile-nav-close-icon {
+    color: #fff;
+    margin-left: auto;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 20rem;
+    padding: 3.6rem 0;
+    gap: 3.6rem;
+    background-color: #000;
+    z-index: 1;
+    transition: all 0.5s ease;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 3.6rem;
+  }
+
+  .main-nav-list li {
+    border-bottom: 1px solid #303030;
+    padding-bottom: 0.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    padding-left: 2.4rem;
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  .main-nav-link-last {
+    position: relative;
+    right: auto;
+  }
+
+  .main-nav-link:hover,
+  .main-nav-link:active {
+    color: #e43314;
+  }
+}
+
+/* ****************** */
+/* Zem 544px
+/* ****************** */
+
+@media (max-width: 34em) {
+  .head {
+    grid-template-columns: 1fr;
+    row-gap: 2.4rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .heading h1 {
+    font-size: 4.4rem;
+  }
+}

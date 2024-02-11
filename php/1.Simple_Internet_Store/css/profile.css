@@ -1,0 +1,409 @@
+.error-message {
+  margin-bottom: 0;
+}
+
+.profile-main {
+  margin: 1.8rem auto;
+  padding-bottom: 9.6rem;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2.4rem;
+}
+.profile-menu-list {
+  list-style: none;
+  border-right: 1px solid #bbb;
+  width: max-content;
+}
+
+.profile-menu-item {
+  font-size: 1.6rem;
+  border-bottom: 1px solid #bbb;
+  padding: 1.6rem;
+  margin-right: 1rem;
+  font-weight: 400;
+}
+.profile-menu-item:last-child {
+  border-bottom: none;
+}
+
+.profile-menu-link:link,
+.profile-menu-link:visited {
+  text-decoration: none;
+  color: #a2a2a2;
+}
+
+.profile-menu-link:hover,
+.profile-menu-link:active {
+  color: #e43314;
+}
+
+.profile-box {
+  width: 100%;
+}
+
+.user-data-box {
+  font-size: 1.8rem;
+  width: 100%;
+}
+.user-data-box tr td {
+  padding-bottom: 3.2rem;
+}
+
+.user-data-label {
+  width: 12rem;
+  vertical-align: top;
+}
+
+.password-row {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.big-red-link:link,
+.big-red-link:visited {
+  color: #e43314;
+  text-decoration: none;
+}
+.big-red-link:hover,
+.big-red-link:active {
+  color: #555;
+}
+
+.password-change-label {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.change-password-inputfield {
+  width: 25rem;
+  height: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.user-data-input {
+  width: 100%;
+  height: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.user-data-input-checkbox {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.user-data-input-textfield {
+  width: 100%;
+  padding: 0.8rem;
+  min-height: 15rem;
+  margin-bottom: 0.8rem;
+}
+
+.user-data-input:focus,
+.user-data-input-textfield:focus {
+  outline: none;
+}
+
+.update-profile-btn-box {
+  text-align: center;
+}
+
+.update-profile-btn-box button {
+  font-family: "Oswald";
+}
+
+.users-table {
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: center;
+  border-collapse: collapse;
+}
+
+.users-table th {
+  height: 2.4rem;
+  padding: 1rem;
+}
+
+.users-table td {
+  height: 5.6rem;
+  padding: 1rem;
+}
+
+.users-table tbody tr:nth-child(odd) {
+  background-color: #dfdfdf;
+}
+
+.users-table a:link,
+.users-table a:visited {
+  text-decoration: none;
+  color: #e43314;
+}
+
+.users-table a:hover,
+.users-table a:active {
+  color: #555;
+}
+
+.hidden-element {
+  align-self: left;
+}
+
+.rating-input {
+  width: 3rem;
+  height: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.star-box {
+  display: flex;
+  gap: 0.8rem;
+  color: #ffa600;
+  font-size: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+/* Profila dzēšanas pārbaudes lapa */
+.check-delete-box {
+  margin: 0 auto;
+  width: fit-content;
+  margin-top: 12rem;
+  display: flex;
+  gap: 6.4rem;
+}
+
+.check-btn:link,
+.check-btn:visited {
+  text-decoration: none;
+  font-size: 2.4rem;
+  font-weight: 500;
+  padding: 0.8rem 1.6rem;
+}
+
+.check-btn-no:link,
+.check-btn-no:visited {
+  color: #567d46;
+  border: 3px solid #567d46;
+}
+
+.check-btn-yes:link,
+.check-btn-yes:visited {
+  color: #e43314;
+
+  border: 3px solid #e43314;
+}
+
+.check-btn-no:hover,
+.check-btn-no:active {
+  color: #fff;
+  background-color: #567d46;
+}
+
+.check-btn-yes:hover,
+.check-btn-yes:active {
+  color: #fff;
+  background-color: #e43314;
+}
+/* /////////////////////////////// */
+/* Profila sadaļas media */
+/* /////////////////////////////// */
+
+/* ****************** */
+/* Zem 944px 
+/* ****************** */
+
+@media (max-width: 59em) {
+  .profile-main {
+    grid-template-columns: 1fr;
+  }
+  .profile-menu {
+    border-bottom: 1px solid #bbb;
+  }
+  .profile-menu-list {
+    display: flex;
+    border-right: none;
+  }
+  .profile-menu-item {
+    border-bottom: 0;
+    border-right: 1px solid #bbb;
+    margin-bottom: 0.8rem;
+  }
+  .profile-menu-item:last-child {
+    border-right: none;
+  }
+}
+
+/* ****************** */
+/* Zem 544px 
+/* ****************** */
+
+@media (max-width: 34em) {
+  .profile-menu-item {
+    font-size: 1.4rem;
+    padding: 0.8rem;
+    margin-right: 0.5rem;
+  }
+  .users-table {
+    text-align: left;
+  }
+  .users-table,
+  .users-table-head,
+  .users-table-body,
+  .users-table th,
+  .users-table td,
+  .users-table tr {
+    display: block;
+  }
+  .users-table-head tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .users-table tr {
+    border: 1px solid #dfdfdf;
+  }
+  .users-table td {
+    padding: 2rem;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    position: relative;
+    padding-left: 50%;
+  }
+  .users-table td:before {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 45%;
+    height: 50%;
+    padding-top: 1rem;
+    border-right: 1px solid #bbb;
+    white-space: nowrap;
+  }
+  /* Piešķiru tabulām rindu nosaukumus */
+
+  /* Rindu nosaukumi tabulai skatīt visas mašīnas */
+  .view-cars-table td:nth-of-type(1):before {
+    content: "Number:";
+  }
+  .view-cars-table td:nth-of-type(2):before {
+    content: "Producer:";
+  }
+  .view-cars-table td:nth-of-type(3):before {
+    content: "Car Model:";
+  }
+  .view-cars-table td:nth-of-type(4):before {
+    content: "Year of Production:";
+  }
+  .view-cars-table td:nth-of-type(5):before {
+    content: "Number Sign:";
+  }
+  .view-cars-table td:nth-of-type(6):before {
+    content: "Color:";
+  }
+  .view-cars-table td:nth-of-type(7):before {
+    content: "Interior Materieal:";
+  }
+  .view-cars-table td:nth-of-type(8):before {
+    content: "Details:";
+  }
+  .view-cars-table td:nth-of-type(9):before {
+    content: "";
+  }
+  .view-cars-table td:nth-of-type(10):before {
+    content: "";
+  }
+
+  /* Rindu nosaukumi tabulai aktīvie pasūtījumi */
+  .view-active-orders td:nth-of-type(1):before {
+    content: "Order ID:";
+  }
+  .view-active-orders td:nth-of-type(2):before {
+    content: "Service:";
+  }
+  .view-active-orders td:nth-of-type(3):before {
+    content: "Car:";
+  }
+  .view-active-orders td:nth-of-type(4):before {
+    content: "Status:";
+  }
+  .view-active-orders td:nth-of-type(5):before {
+    content: "Appointment Date:";
+  }
+  .view-active-orders td:nth-of-type(6):before {
+    content: "End Date:";
+  }
+  .view-active-orders td:nth-of-type(7):before {
+    content: "End Price:";
+  }
+
+  /* Rindu nosaukumi tabulai pasūtījumu vēsture */
+  .order-history td:nth-of-type(1):before {
+    content: "Order ID:";
+  }
+  .order-history td:nth-of-type(2):before {
+    content: "Service:";
+  }
+  .order-history td:nth-of-type(3):before {
+    content: "Car:";
+  }
+  .order-history td:nth-of-type(4):before {
+    content: "Status:";
+  }
+  .order-history td:nth-of-type(5):before {
+    content: "Appointment Date:";
+  }
+  .order-history td:nth-of-type(6):before {
+    content: "End Date:";
+  }
+  .order-history td:nth-of-type(7):before {
+    content: "End Price:";
+  }
+  .order-history td:nth-of-type(8):before {
+    content: "Order Report:";
+  }
+  .order-history td:nth-of-type(9):before {
+    content: "";
+  }
+
+  /* Rindu nosaukumi tabulai komentāri */
+  .comment-table td:nth-of-type(1):before {
+    content: "Comment ID:";
+  }
+  .comment-table td:nth-of-type(2):before {
+    content: "Topic Title:";
+  }
+  .comment-table td:nth-of-type(3):before {
+    content: "Rating:";
+  }
+  .comment-table td:nth-of-type(4):before {
+    content: "Content:";
+  }
+  .comment-table td:nth-of-type(5):before {
+    content: "Date:";
+  }
+  .comment-table td:nth-of-type(6):before {
+    content: "Anonyme Comment:";
+  }
+  .comment-table td:nth-of-type(7):before {
+    content: "Status:";
+  }
+  .comment-table td:nth-of-type(8):before {
+    content: "";
+  }
+  .comment-table td:nth-of-type(9):before {
+    content: "";
+  }
+}
+/* ****************** */
+/* Zem 400px 
+/* ****************** */
+
+@media (max-width: 25em) {
+  .profile-menu-item {
+    font-size: 1.2rem;
+  }
+}

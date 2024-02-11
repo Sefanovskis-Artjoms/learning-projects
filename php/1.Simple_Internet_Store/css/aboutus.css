@@ -1,0 +1,153 @@
+.about-section {
+  padding: 4.8rem 0;
+  padding-bottom: 9.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.2rem;
+  row-gap: 3.2rem;
+}
+
+.about-img {
+  max-width: 100%;
+  max-height: 35rem;
+}
+
+.contact-heading {
+  margin-bottom: 1.6rem;
+}
+
+.about-map {
+  height: 35rem;
+  width: 100%;
+}
+
+.about-work-hours {
+  display: flex;
+  column-gap: 1.2rem;
+  align-items: center;
+}
+
+.about-contact-info {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.work-hours {
+  text-align: center;
+  width: 15rem;
+  font-weight: 600;
+}
+
+.work-hours th {
+  color: #e43314;
+}
+
+.work-hours tr {
+  height: 2.5rem;
+}
+
+.heading-box {
+  grid-column: 1 / -1;
+}
+
+/* /////////////////////////////// */
+/* Par mums lapas media */
+/* /////////////////////////////// */
+
+/* ****************** */
+/* Zem 704px 
+/* ****************** */
+
+@media (max-width: 44em) {
+  .about-section {
+    grid-template-columns: 1fr;
+    row-gap: 2.4rem;
+  }
+  .about-img-box {
+    text-align: center;
+  }
+  .about-img1 {
+    width: 100%;
+    height: auto;
+  }
+  .section-reach-content {
+    grid-row: 1 / 2;
+  }
+  .about-map {
+    height: 45rem;
+  }
+
+  .img2 {
+    grid-row: 3 / 4;
+  }
+
+  .img3 {
+    grid-row: 5/6;
+  }
+  .img4 {
+    grid-row: 7/8;
+  }
+  .img5 {
+    grid-row: 9/10;
+  }
+  .img6 {
+    grid-row: 11/12;
+  }
+  .img7 {
+    grid-row: 13/14;
+  }
+  .img8 {
+    grid-row: 15/16;
+  }
+  .img9 {
+    grid-row: 17/18;
+  }
+  .img10 {
+    grid-row: 19/20;
+  }
+  .img11 {
+    grid-row: 21/22;
+  }
+  .img12 {
+    grid-row: 23/24;
+  }
+  .img13 {
+    grid-row: 25/26;
+  }
+  .img14 {
+    grid-row: 27/28;
+  }
+  .img15 {
+    grid-row: 29/30;
+  }
+  .img16 {
+    grid-row: 31/32;
+  }
+  .img17 {
+    grid-row: 33/34;
+  }
+  .img18 {
+    grid-row: 35/36;
+  }
+  .img19 {
+    grid-row: 37/38;
+  }
+  .img20 {
+    grid-row: 39/40;
+  }
+  .img21 {
+    grid-row: 41/42;
+  }
+  .img22 {
+    grid-row: 43/44;
+  }
+  .img23 {
+    grid-row: 45/46;
+  }
+  .img24 {
+    grid-row: 47/48;
+  }
+  .img25 {
+    grid-row: 49/50;
+  }
+}

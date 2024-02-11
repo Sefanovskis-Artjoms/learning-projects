@@ -1,0 +1,191 @@
+.services-back-btn {
+  margin: 2.4rem 0;
+}
+
+.services-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem;
+  margin-bottom: 4.8rem;
+}
+
+.services-img {
+  height: 33rem;
+}
+
+.services-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+}
+
+.service-rating-stars {
+  color: #ffa600;
+  font-size: 1.8rem;
+  padding-bottom: 1.8rem;
+  padding-right: 0.4rem;
+  display: inline-block;
+}
+
+.service-review-score {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+}
+
+.service-price {
+  margin-bottom: 1.8rem;
+}
+
+.service-name {
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.services-cart-btn {
+  width: max-content;
+}
+
+.services-descriptoin-section {
+  margin-bottom: 4.8rem;
+}
+
+.service-header-h3 {
+  color: #1a1a1a;
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.services-description {
+  font-size: 1.8rem;
+  height: max-content;
+}
+
+.description-link:link,
+.description-link:visited {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #e43314;
+  text-decoration: none;
+}
+
+.services-comments-section {
+  padding-bottom: 9.6rem;
+  position: relative;
+}
+
+.btn-services-add-comment {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.testimonial-content {
+  margin: 3.2rem 0;
+  padding: 1.2rem 0;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.comment-info {
+  padding-right: 1.2rem;
+  border-right: 1px #d3ced2 solid;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  gap: 0.8rem;
+  font-weight: 600;
+}
+
+.empty-comments-msg {
+  padding-top: 6.4rem;
+  font-size: 2.8rem;
+}
+
+.comment-rating {
+  color: #ffa600;
+  width: 12rem;
+}
+
+.comment-content {
+  padding-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.comment-votes {
+  justify-content: right;
+  display: flex;
+  gap: 1.2rem;
+  font-weight: 600;
+}
+
+.comment-votes i {
+  color: #5b5b5b;
+}
+
+.comment-votes i:hover {
+  color: #e43314;
+}
+
+/* /////////////////////////////// */
+/* Preces lapas media */
+/* /////////////////////////////// */
+
+/* ****************** */
+/* Zem 704px 
+/* ****************** */
+
+@media (max-width: 44em) {
+  .services-box {
+    grid-template-columns: 1fr;
+  }
+  .services-img {
+    width: 100%;
+    height: auto;
+  }
+  .services-header {
+    font-size: 4.4rem;
+  }
+  .wrapper,
+  .service-rating-stars,
+  .service-review-score {
+    font-size: 2.4rem;
+  }
+  .service-labour {
+    margin-bottom: 3.2rem;
+  }
+
+  .btn--cta,
+  .btn--cta:link,
+  .btn--cta:visited {
+    font-size: 1.6rem;
+    padding: 1.2rem 2.4rem;
+  }
+}
+
+/* ****************** */
+/* Zem 544px 
+/* ****************** */
+
+@media (max-width: 25em) {
+  .btn--cta,
+  .btn--cta:link,
+  .btn--cta:visited {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+  }
+  .services-header {
+    font-size: 3.6rem;
+  }
+  .wrapper,
+  .service-rating-stars,
+  .service-review-score {
+    font-size: 2rem;
+  }
+}

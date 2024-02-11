@@ -1,0 +1,438 @@
+/* Page general styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  background-color: #f3f3f3;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.text {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #5b5b5b;
+}
+
+.error-message {
+  margin-bottom: 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #e43314;
+  text-transform: uppercase;
+}
+
+.page {
+  max-width: 120rem;
+  margin: 0 auto 9.6rem auto;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+}
+
+.main {
+  padding: 4.8rem 1.8rem 9.6rem 1.8rem;
+  overflow-x: auto;
+}
+
+.btn--cta,
+.btn--cta:link,
+.btn--cta:visited {
+  font-family: "Oswald", sans-serif;
+  display: inline-block;
+  color: #fff;
+  background-color: #e43314;
+  font-size: 1.6rem;
+  text-decoration: none;
+  padding: 1.2rem 2.4rem;
+  border-radius: 100px;
+  text-align: center;
+  border: #e43314 solid 1px;
+  height: fit-content;
+}
+
+.btn--cta:hover,
+.btn--cta:active {
+  color: #e43314;
+  background-color: #fff;
+}
+
+.btn--cta i {
+  padding-right: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.empty-msg {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: black;
+}
+
+/* Genera style for page headers */
+
+.btn--submit {
+  display: block;
+  text-align: center;
+}
+
+.page-header-box {
+  display: flex;
+  margin-bottom: 3.2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-heading {
+  font-size: 3.2rem;
+  color: #1a1a1a;
+}
+
+.page-heading-line {
+  display: inline-block;
+  border-top: 5px solid #e43314;
+  width: 5rem;
+}
+
+/* General style for horizontal tables */
+
+.hor-table {
+  font-size: 1.2rem;
+  text-align: left;
+  vertical-align: center;
+  border-collapse: collapse;
+}
+
+.hor-table-head {
+  font-size: 1.6rem;
+}
+
+.hor-table th {
+  height: 2.4rem;
+  padding: 1rem;
+}
+
+.hor-table td {
+  height: 5.6rem;
+  padding: 1rem;
+}
+
+.hor-table tbody tr:nth-child(odd) {
+  background-color: #dfdfdf;
+}
+
+.hor-table a:link,
+.hor-table a:visited {
+  text-decoration: none;
+  color: #e43314;
+}
+
+.hor-table a:hover,
+.hor-table a:active {
+  color: #555;
+}
+
+/* General style for vertical tables */
+
+.ver-table {
+  font-size: 1.8rem;
+  width: 100%;
+}
+.ver-table tr td {
+  padding-bottom: 3.2rem;
+}
+
+.ver-table-label {
+  width: 12rem;
+  padding-right: 1.2rem;
+  vertical-align: top;
+}
+
+/* /////////////////////////////// */
+/* Admina sadaļas universālie media */
+/* /////////////////////////////// */
+
+/* ****************** */
+/* Zem 1200px */
+/* ****************** */
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+/* ****************** */
+/* Zem 944px */
+/* ****************** */
+
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/* ****************** */
+/* Zem 704px  */
+/* ****************** */
+
+@media (max-width: 44em) {
+  html {
+    font-size: 43.75%;
+  }
+  .hor-table {
+    text-align: left;
+    width: 100%;
+  }
+  .hor-table,
+  .hor-table-head,
+  .hor-table-body,
+  .hor-table th,
+  .hor-table td,
+  .hor-table tr {
+    display: block;
+  }
+  .hor-table-head tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .hor-table tr {
+    border: 1px solid #dfdfdf;
+  }
+  .hor-table td {
+    height: fit-content;
+    padding: 2rem;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    position: relative;
+    padding-left: 50%;
+  }
+  .hor-table td:before {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 45%;
+    height: 50%;
+    padding-top: 1rem;
+    border-right: 1px solid #bbb;
+    white-space: nowrap;
+  }
+  /* Pievienoju rindu nosaukumus visām izmantotām tabulām */
+
+  /* Rindu nosaukumi pakalpojumu tabulai */
+  .view-all-services-table td:nth-of-type(1):before {
+    content: "ID:";
+  }
+  .view-all-services-table td:nth-of-type(2):before {
+    content: "Title:";
+  }
+  .view-all-services-table td:nth-of-type(3):before {
+    content: "Price:";
+  }
+  .view-all-services-table td:nth-of-type(4):before {
+    content: "Hours:";
+  }
+  .view-all-services-table td:nth-of-type(5):before {
+    content: "Review count:";
+  }
+  .view-all-services-table td:nth-of-type(6):before {
+    content: "Rating:";
+  }
+  .view-all-services-table td:nth-of-type(7):before {
+    content: "Description:";
+  }
+  .view-all-services-table td:nth-of-type(8):before {
+    content: "Image:";
+  }
+  .view-all-services-table td:nth-of-type(9):before {
+    content: "";
+  }
+  .view-all-services-table td:nth-of-type(10):before {
+    content: "";
+  }
+
+  /* Rindu nosaukumi pasūtījumu tabulai */
+  .view-all-orders-table td:nth-of-type(1):before {
+    content: "ID:";
+  }
+  .view-all-orders-table td:nth-of-type(2):before {
+    content: "User:";
+  }
+  .view-all-orders-table td:nth-of-type(3):before {
+    content: "Service:";
+  }
+  .view-all-orders-table td:nth-of-type(4):before {
+    content: "Car:";
+  }
+  .view-all-orders-table td:nth-of-type(5):before {
+    content: "Order date:";
+  }
+  .view-all-orders-table td:nth-of-type(6):before {
+    content: "Appointment Date:";
+  }
+  .view-all-orders-table td:nth-of-type(7):before {
+    content: "Status:";
+  }
+  .view-all-orders-table td:nth-of-type(8):before {
+    content: "Date of Completion:";
+  }
+  .view-all-orders-table td:nth-of-type(9):before {
+    content: "End Price";
+  }
+  .view-all-orders-table td:nth-of-type(10):before {
+    content: "Report";
+  }
+  .view-all-orders-table td:nth-of-type(11):before {
+    content: "";
+  }
+  .view-all-services-table td:nth-of-type(12):before {
+    content: "";
+  }
+
+  /* Rindu nosaukumi komentāru tabulai */
+  .view-all-comments-table td:nth-of-type(1):before {
+    content: "ID:";
+  }
+  .view-all-comments-table td:nth-of-type(2):before {
+    content: "Topic:";
+  }
+  .view-all-comments-table td:nth-of-type(3):before {
+    content: "User ID:";
+  }
+  .view-all-comments-table td:nth-of-type(4):before {
+    content: "User:";
+  }
+  .view-all-comments-table td:nth-of-type(5):before {
+    content: "Rating:";
+  }
+  .view-all-comments-table td:nth-of-type(6):before {
+    content: "Comment:";
+  }
+  .view-all-comments-table td:nth-of-type(7):before {
+    content: "Date:";
+  }
+  .view-all-comments-table td:nth-of-type(8):before {
+    content: "Is Anonyme:";
+  }
+  .view-all-comments-table td:nth-of-type(9):before {
+    content: "Status";
+  }
+  .view-all-comments-table td:nth-of-type(10):before {
+    content: "";
+  }
+  .view-all-comments-table td:nth-of-type(11):before {
+    content: "";
+  }
+  .view-all-services-table td:nth-of-type(12):before {
+    content: "";
+  }
+
+  /* Rindu nosaukumi lietotāju tabulai */
+  .view-all-users-table td:nth-of-type(1):before {
+    content: "ID:";
+  }
+  .view-all-users-table td:nth-of-type(2):before {
+    content: "First Name:";
+  }
+  .view-all-users-table td:nth-of-type(3):before {
+    content: "Last Name:";
+  }
+  .view-all-users-table td:nth-of-type(4):before {
+    content: "Email:";
+  }
+  .view-all-users-table td:nth-of-type(5):before {
+    content: "Phone:";
+  }
+  .view-all-users-table td:nth-of-type(6):before {
+    content: "Role:";
+  }
+  .view-all-users-table td:nth-of-type(7):before {
+    content: "Options:";
+  }
+  .view-all-users-table td:nth-of-type(8):before {
+    content: ":";
+  }
+  .view-all-users-table td:nth-of-type(9):before {
+    content: "";
+  }
+  .view-all-users-table td:nth-of-type(10):before {
+    content: "";
+  }
+
+  /* Rindu nosaukumi lietotāju datu tabulai sadaļā pasūtījumi=>skatīt pasūtījuma detaļas */
+  .view-orderuser-table td:nth-of-type(1):before {
+    content: "ID:";
+  }
+  .view-orderuser-table td:nth-of-type(2):before {
+    content: "User:";
+  }
+  .view-orderuser-table td:nth-of-type(3):before {
+    content: "Phone:";
+  }
+  .view-orderuser-table td:nth-of-type(4):before {
+    content: "Email:";
+  }
+
+  /* Rindu nosaukumi lietotāju datu tabulai sadaļā pasūtījumi=>skatīt pasūtījuma detaļas */
+  .view-ordercar-table td:nth-of-type(1):before {
+    content: "ID:";
+  }
+  .view-ordercar-table td:nth-of-type(2):before {
+    content: "Producer:";
+  }
+  .view-ordercar-table td:nth-of-type(3):before {
+    content: "Model:";
+  }
+  .view-ordercar-table td:nth-of-type(4):before {
+    content: "Year:";
+  }
+  .view-ordercar-table td:nth-of-type(5):before {
+    content: "Number Sign:";
+  }
+  .view-ordercar-table td:nth-of-type(6):before {
+    content: "Color:";
+  }
+  .view-ordercar-table td:nth-of-type(7):before {
+    content: "Interior:";
+  }
+  .view-ordercar-table td:nth-of-type(8):before {
+    content: "Detalis:";
+  }
+}
+
+/* ****************** */
+/* Zem 544px 
+/* ****************** */
+
+@media (max-width: 34em) {
+  .btn--cta,
+  .btn--cta:link,
+  .btn--cta:visited {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+  }
+}

@@ -1,0 +1,34 @@
+.wrapper {
+  width: fit-content;
+}
+
+.input-label {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.input-field {
+  display: block;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 0.8rem;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.input-image {
+  margin-bottom: 1rem;
+}
+
+/* ****************** */
+/* Zem 704px  */
+/* ****************** */
+
+@media (max-width: 44em) {
+  .wrapper {
+    width: 100%;
+  }
+}

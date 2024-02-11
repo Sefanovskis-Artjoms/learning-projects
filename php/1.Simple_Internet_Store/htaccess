@@ -1,0 +1,28 @@
+RewriteEngine On
+
+#https://stackoverflow.com/questions/5932641/deny-directory-listing-with-htaccess
+#https://mediatemple.net/community/products/dv/204643020/creating-custom-error-pages
+
+#staigasana pa mapem
+Options -Indexes
+
+#Force hide file extensions
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+
+#Force www:
+RewriteCond %{HTTP_HOST} ^bt.local [NC]
+RewriteRule ^(.*)$ http://www.bt.local/$1 [L,R=301,NC]
+
+#Error pages
+#Pāradresēšana uz lapu, gadījumā, ja lapa netiek atrasta
+ErrorDocument 404 /error.php
+
+#Pāradresēšana uz lapu, lai lietotājiem nebūtu iespēja brīvi staigāp pa direktorijām
+ErrorDocument 403 /forbidden.php
