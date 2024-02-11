@@ -2,7 +2,7 @@
 
 ## About the Repository
 
-Welcome to my GitHub repository showcasing a collection of pet projects! Here, you'll find a variety of projects that reflect my journey as a developer. Whether they are personal experiments, small projects that I did for others or tutorials that I followed, each project represents a valuable step in my learning process.
+Welcome to my GitHub repository showcasing a collection of my learning projects! Here, you'll find a variety of projects that reflect my journey as a developer. Whether they are personal experiments, small projects that I did for others or tutorials that I followed, each project represents a valuable step in my learning process.
 
 ## Project Structure
 
