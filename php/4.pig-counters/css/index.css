@@ -1,0 +1,27 @@
+/* //////////// */
+/* Body */
+.content-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+/* //////////// */
+/* Date */
+.date {
+  font-size: 3.2rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+/* //////////// */
+/* Misclick button */
+.btn-switch {
+  display: flex;
+  margin: 0 auto;
+}
+
+.btn-toDecrement {
+  background-color: #2db1f4;
+  border: 1px solid #248ec3;
+}

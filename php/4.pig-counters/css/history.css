@@ -1,0 +1,23 @@
+.searchbar {
+  background-color: #f57e42;
+  padding: 1.8rem 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+.search-input {
+  width: 50rem;
+  padding: 1rem 2.4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  background-color: #fbfbfb;
+  border: 1px solid #e2540c;
+  outline: none;
+  margin-left: 0.8rem;
+  margin-right: 2.4rem;
+}
+
+.history-box {
+  display: flex;
+  row-gap: 1.6rem;
+  column-gap: 0.8rem;
+}

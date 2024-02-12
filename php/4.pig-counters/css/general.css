@@ -1,0 +1,205 @@
+/* General */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-weight: 500;
+  color: #333;
+}
+
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(to bottom right, #fbfbfb, #c9c9c9);
+  max-width: 180rem;
+  margin: 0 auto;
+}
+/* ////////////////// */
+/* Buttons */
+.btn {
+  width: fit-content;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border: 1px solid #e2540c;
+  background-color: #f4702d;
+}
+
+/* To fix issues with counter buttons */
+.btn,
+.btn * {
+  color: #191919;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ///////////// */
+/* Navigation */
+.navigation {
+  margin-bottom: 4rem;
+  margin-top: 1.2rem;
+}
+
+.navigation {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn-nav {
+  display: flex;
+  align-items: center;
+  background-color: #f36016;
+  border: 1px solid #cc4b0a;
+}
+
+.btn-nav-active {
+  border: 4px solid #cc4b0a;
+}
+
+/* //////////// */
+/* counters */
+.counter-zone {
+  transition: all 1s ease;
+}
+
+.counter-zone-header {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin: 0 auto 1.2rem auto;
+  width: fit-content;
+}
+
+.counter-container {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.counter-zone-wrapper {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.shadow {
+  box-shadow: 0 0 30px #f4d32d;
+  background: #f4d32d;
+}
+
+.btn-counter {
+  display: grid;
+  row-gap: 0.8rem;
+  column-gap: 0.8rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.counter-number,
+.action {
+  justify-self: right;
+}
+
+.counter-name {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+
+.btn-decrement {
+  background-color: #2db1f4;
+  border: 1px solid #248ec3;
+}
+
+/* /////////////////// */
+/* Siluet  */
+.zones {
+  margin: 0 auto 3.2rem auto;
+  position: relative;
+  width: 35rem;
+  height: 70rem;
+}
+
+.counter-container {
+  display: inline-block;
+}
+
+.zone-img {
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.zone-img:hover {
+  transform: scale(1.04);
+}
+
+.zone-img:active {
+  transform: scale(0.97);
+}
+
+.zone-img-1 {
+  position: absolute;
+  top: 5.5rem;
+  left: 17rem;
+  width: 15.7rem;
+}
+
+.zone-img-2 {
+  position: absolute;
+  left: 18rem;
+  top: 24rem;
+  width: 14.5rem;
+}
+
+.zone-img-3 {
+  position: absolute;
+  top: 22rem;
+  left: 12.9rem;
+  width: 5.9rem;
+}
+
+.zone-img-4 {
+  position: absolute;
+  top: 30.5rem;
+  left: 18.7rem;
+  width: 10.4rem;
+}
+.zone-img-5 {
+  position: absolute;
+  top: 36.8rem;
+  left: 9.1rem;
+  width: 9.5rem;
+}
+.zone-img-6 {
+  position: absolute;
+  top: 37.3rem;
+  left: 16.6rem;
+  width: 12.9rem;
+}
+.zone-img-7 {
+  position: absolute;
+  top: 48.4rem;
+  left: 2.4rem;
+  width: 13rem;
+}
+.zone-img-8 {
+  position: absolute;
+  top: 49.4rem;
+  left: 13.8rem;
+  width: 15.8rem;
+}
+
+/* //////////////////////////// */

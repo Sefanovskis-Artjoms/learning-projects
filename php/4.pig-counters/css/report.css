@@ -1,0 +1,25 @@
+.report-headline {
+  font-size: 4.4rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4.4rem;
+}
+
+.content-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.counter-zone-header {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.btn-counter {
+  grid-template-columns: 1fr;
+}
+
+.counter-number {
+  justify-self: center;
+}
