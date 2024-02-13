@@ -16,5 +16,6 @@ This is the sequence in what I have completed each project
 2. [(JS) Simple calculator](./js/2.Simple_calculator/)
 3. [(JS) Sudoku game](./js/3.Sudoku/)
 4. [(PHP) Record keeping app for meat-factory in England](./php/4.pig-counters/)
-5. [(JS) Battleship game assistant](./js/5.Battleships/)
-6. (JS) Workout record keeping app on the map (Initial idea and code from Udemy course)
+5. [(JS) Forkify - a cooking recipe app(copied from udemy course)]()
+6. [(JS) Battleship game assistant](./js/5.Battleships/)
+7. (JS) Mapty - aorkout record keeping app on the map (Initial idea and code copied from Udemy course)
